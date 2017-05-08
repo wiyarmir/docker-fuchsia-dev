@@ -1,0 +1,9 @@
+#!/usr/bin/env expect
+set sdk [lindex $argv 0]
+set buildtools [lindex $argv 1]
+set timeout -1;
+spawn android update sdk --use-sdk-wrapper --no-ui --all --filter "tools,platform-tools,$sdk,build-tools-$buildtools";
+expect {
+    "Accept? (y/N):" { exp_send "y\r" ; exp_continue }
+    eof
+}
