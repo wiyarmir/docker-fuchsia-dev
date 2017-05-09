@@ -23,7 +23,7 @@
 Easy build of a release APK
 
     docker run --name armadillo wiyarmir/fuchsia:armadillo
-    docker cp armadillo:fuchsia/apps/sysui/armadillo/android/app/build/outputs/apk/app-release.apk .
+    docker cp armadillo:/home/fuchsia/fuchsia/apps/sysui/armadillo/android/app/build/outputs/apk/app-release.apk .
 
 # LICENSE
 
