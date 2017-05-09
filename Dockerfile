@@ -44,9 +44,9 @@ RUN wget -q https://services.gradle.org/distributions/${GRADLE_DIST} && \
 ENV PATH ${PATH}:${HOME}/${GRADLE_VER}/bin 
 
 # Installs Android SDK
-RUN mkdir -p ${ANDROID_HOME} && \
-    cd ${ANDROID_HOME} && \
-    wget  -q ${ANDROID_SDK_URL} && \
+RUN mkdir -p ${ANDROID_HOME} 		 && \
+    cd ${ANDROID_HOME}				 && \
+    wget  -q ${ANDROID_SDK_URL} 	 && \
     unzip -q ${ANDROID_SDK_FILENAME} && \
     rm ${ANDROID_SDK_FILENAME} 
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
@@ -60,19 +60,16 @@ ENV PATH="${HOME}/flutter/bin:${PATH}"
 RUN flutter doctor
 
 # Get fuchsia
-RUN mkdir fuchsia && \
-    cd fuchsia && \
+RUN mkdir fuchsia 		  && \
+    cd fuchsia			  && \
     mkdir -p apps/modules && \
-    mkdir -p lib && \
+    mkdir -p lib 		  && \
     mkdir -p third_party 
 RUN cd fuchsia/apps && \
-    git clone https://github.com/fuchsia-mirror/sysui.git && \
-    cd sysui && \
-    git checkout af1dd921842718e4    
+    git clone https://github.com/fuchsia-mirror/sysui.git
 RUN cd fuchsia/apps/modules && \
     git clone https://github.com/fuchsia-mirror/modules-common.git common
 RUN cd fuchsia/lib && \
     git clone https://fuchsia.googlesource.com/widgets
 RUN cd fuchsia/third_party && \
     git clone https://github.com/fuchsia-mirror/third_party-dart-pkg dart-pkg
-RUN cd fuchsia/third_party
