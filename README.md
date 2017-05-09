@@ -12,6 +12,8 @@
 
 3. `docker build -t "wiyarmir/fuchsia" .`
 
+**WARNING:** This script assumes you have already accepted the Android License and will check yes for you.
+
 ### Usage
 
     docker run -it --rm wiyarmir/fuchsia
