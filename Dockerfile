@@ -1,13 +1,21 @@
 FROM cogniteev/oracle-java:java8
 
+### START OF CONFIG ###
+
 ENV HOME /home/fuchsia
+ENV FLUTTER_BRANCH alpha
+
+# Android Config 
 ENV ANDROID_SDK_FILENAME sdk-tools-linux-3859397.zip
 ENV ANDROID_SDK_URL https://dl.google.com/android/repository/${ANDROID_SDK_FILENAME}
 ENV ANDROID_API_LEVELS android-25
 ENV ANDROID_BUILD_TOOLS_VERSION 25.0.3
 ENV ANDROID_HOME ${HOME}/android-sdk-linux
 
+### END OF CONFIG ###
+
 # General deps
+RUN dpkg --add-architecture i386 
 RUN apt-get update && apt-get install -y \
     build-essential                      \
     git                                  \
@@ -15,15 +23,11 @@ RUN apt-get update && apt-get install -y \
     zip                                  \
     unzip                                \
     lib32stdc++6                         \
-    expect
-    
-# Installs i386 architecture required for running 32 bit Android tools
-RUN dpkg --add-architecture i386 && \
-    apt-get update -y && \
-    apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 && \
-    rm -rf /var/lib/apt/lists/* && \
-    apt-get autoremove -y && \
-    apt-get clean
+    expect								 \
+    libc6:i386 							 \
+    libncurses5:i386					 \ 
+    libstdc++6:i386 					 \
+    lib32z1 
         
 # Prepare user and workdir
 RUN mkdir -p ${HOME}
@@ -45,12 +49,11 @@ RUN mkdir -p ${ANDROID_HOME} && \
     wget  -q ${ANDROID_SDK_URL} && \
     unzip -q ${ANDROID_SDK_FILENAME} && \
     rm ${ANDROID_SDK_FILENAME} 
-
 COPY accept-and-install-sdk.exp .
 RUN ./accept-and-install-sdk.exp ${ANDROID_API_LEVELS} ${ANDROID_BUILD_TOOLS_VERSION}
 
 # Install Flutter
-RUN git clone -b alpha https://github.com/flutter/flutter.git
+RUN git clone -b ${FLUTTER_BRANCH} https://github.com/flutter/flutter.git
 ENV PATH="${HOME}/flutter/bin:${PATH}"
 RUN flutter doctor
 
