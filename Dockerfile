@@ -61,7 +61,9 @@ RUN mkdir fuchsia && \
     mkdir -p lib && \
     mkdir -p third_party 
 RUN cd fuchsia/apps && \
-    git clone https://github.com/fuchsia-mirror/sysui.git
+    git clone https://github.com/fuchsia-mirror/sysui.git && \
+    cd sysui && \
+    git checkout af1dd921842718e4    
 RUN cd fuchsia/apps/modules && \
     git clone https://github.com/fuchsia-mirror/modules-common.git common
 RUN cd fuchsia/lib && \
