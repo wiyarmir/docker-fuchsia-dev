@@ -16,7 +16,6 @@ endif
 GIT_COMMIT = $(strip $(shell git rev-parse --short HEAD))
 
 docker_build:
-	echo `pwd`
 	docker build \
   --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
   --build-arg VCS_URL=`git config --get remote.origin.url` \
