@@ -1,5 +1,7 @@
 # Fuchsia Development environment
 
+[![](https://images.microbadger.com/badges/image/wiyarmir/fuchsia.svg)](https://microbadger.com/images/wiyarmir/fuchsia "Get your own image badge on microbadger.com") 
+
 # Base Docker Image
 
 * [cogniteev/oracle-java:java8](https://hub.docker.com/r/cogniteev/oracle-java/)
@@ -19,6 +21,8 @@
     docker run -it --rm wiyarmir/fuchsia
 
 ### You came here for Armadillo?
+
+[![](https://images.microbadger.com/badges/image/wiyarmir/fuchsia:armadillo.svg)](https://microbadger.com/images/wiyarmir/fuchsia:armadillo "Get your own image badge on microbadger.com")
 
 Easy build of a release APK
 
