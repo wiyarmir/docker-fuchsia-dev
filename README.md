@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/wiyarmir/docker-fuchsia-dev.svg?branch=master)](https://travis-ci.org/wiyarmir/docker-fuchsia-dev)
+
 # Fuchsia Development environment
 
 [![](https://images.microbadger.com/badges/image/wiyarmir/fuchsia.svg)](https://microbadger.com/images/wiyarmir/fuchsia "Get your own image badge on microbadger.com") 
