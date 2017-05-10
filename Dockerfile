@@ -1,11 +1,12 @@
 FROM cogniteev/oracle-java:java8
 
-ARG VCS_REF
 ARG BUILD_DATE
+ARG VCS_REF
+ARG VCS_URL
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
 	  org.label-schema.vcs-ref=$VCS_REF \
-	  org.label-schema.vcs-url="e.g. https://github.com/wiyarmir/docker-fuchsia-dev" \
+	  org.label-schema.vcs-url="$VCS_URL" \
 	  org.label-schema.schema-version="1.0"
           
 ### START OF CONFIG ###
