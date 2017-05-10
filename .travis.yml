@@ -5,4 +5,4 @@ services:
   
 script:
   - make
-  - cd armadillo/ && make
+  - cd armadillo/ && DOCKER_IMAGE="wiyarmir/fuchsia:armadillo" make
